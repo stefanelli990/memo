@@ -32,7 +32,7 @@ import { useStoreNotes } from '../stores/storeNotes';
 const inputTitle = ref('');
 const inputDescription = ref('');
 
-const props = defineProps(['modalIsVisible']);
+
 const emits = defineEmits(['close-modal']);
 
 const storeNotes = useStoreNotes();

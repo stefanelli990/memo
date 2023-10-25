@@ -18,6 +18,7 @@ import AppModal from '../components/AppModal.vue';
 const storeNotes = useStoreNotes();
 const modalIsVisible = ref(false);
 
+
 const openModal = () => {
   modalIsVisible.value = true;
 }
