@@ -1,6 +1,6 @@
 <template>
   <header class="p-4 flex justify-between items-center bg-white text-darkColor">
-      <div class="text-3xl font-bold"><span class="text-primaryColor">Notes</span> App</div>
+      <RouterLink to="/" class="text-3xl font-bold"><span class="text-primaryColor">Notes</span> App</RouterLink>
       <nav class="space-x-4">
         <RouterLink to="/">Notes</RouterLink>
         <RouterLink to="/stats">Stats</RouterLink>

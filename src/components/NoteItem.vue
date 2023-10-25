@@ -3,7 +3,9 @@
       <div class="flex-1">
         <div class="flex justify-between items-start">
           <h2 class="text-xl font-semibold mb-4">{{ note.title }}</h2>
-          <Icon icon="tabler:dots" width="24" height="24"/>
+          <button>
+            <Icon icon="tabler:dots" width="24" height="24"/>
+          </button>
         </div>
         <p>{{ note.description }}</p>
       </div>
