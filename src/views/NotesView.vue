@@ -2,7 +2,7 @@
   <SearchNotes />
   <ul class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4 mb-4">
     <AddNote @open-modal="openModal" @close-modal="closeModal" />
-    <NoteItem v-for="note in storeNotes.notes" :key="note.id" :note="note"  @edit="editNote"/>
+    <NoteItem v-for="note in storeNotes.filterNotes" :key="note.id" :note="note"  @edit="editNote"/>
   </ul>
   <AppModal v-if="modalIsVisible" @close-modal="closeModal">
         <div class="flex justify-between items-center mb-8">

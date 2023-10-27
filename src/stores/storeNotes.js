@@ -25,11 +25,20 @@ export const useStoreNotes = defineStore("storeNotes", {
           description:
             "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
         },
-      ]
+      ],
+      searchTerm: ''
     };
   },
   getters: {
-   
+   filterNotes: (state) => {
+    const search = state.searchTerm.toLowerCase().trim();
+
+    if(search === '') {
+      return state.notes
+    } else {
+      return state.notes.filter(note => note.title.toLowerCase().includes(search))
+    }
+   }
   },
   actions: {
     addNote(note) {

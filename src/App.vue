@@ -4,7 +4,7 @@
       <nav class="hidden md:flex space-x-4">
         <RouterLink to="/">Notes</RouterLink>
         <RouterLink to="/stats">Stats</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/about">About App</RouterLink>
       </nav>
   </header>
   <RouterView />
