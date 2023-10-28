@@ -1,5 +1,7 @@
 <template>
   <SearchNotes />
+
+  <LoadingSpinner v-if="!storeNotes.isLoading"/>
   <ul class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4 mb-4">
     <AddNote @open-modal="openModal" @close-modal="closeModal" />
     <NoteItem v-for="note in storeNotes.filterNotes" :key="note.id" :note="note"  @edit="editNote"/>
@@ -37,8 +39,10 @@
               class="bg-gray-100 p-4 resize-none rounded-md outline-primaryColor"
             ></textarea>
           </div>
-          <AppBtn v-if="!isEditing" caption="Add Note" />
-          <AppBtn v-else caption="Update Note" />
+          <div class="flex space-x-4">
+            <AppBtn v-if="!isEditing" caption="Add Note" type="btn-primary"/>
+            <AppBtn v-else caption="Update Note" type="btn-primary"/>
+          </div>
         </form>
       </AppModal>
 </template>
@@ -53,6 +57,8 @@ import AddNote from "../components/AddNote.vue";
 import NoteItem from "../components/NoteItem.vue";
 import AppModal from "../components/AppModal.vue";
 import AppBtn from '../components/AppBtn.vue';
+import LoadingSpinner from '../components/LoadingSpinner.vue';
+
 
 const inputTitle = ref('');
 const inputDescription = ref('');
@@ -84,6 +90,7 @@ const closeModal = () => {
 
 const addNewNote = () => {
     if(!isEditing.value && inputTitle.value && inputDescription.value) {
+
         const options = { day: "numeric", month: "long", year: "numeric" };
         const note = {
             id: uuidv4(),

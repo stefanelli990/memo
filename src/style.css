@@ -13,6 +13,18 @@
     }
 }
 
+@layer components {
+    .btn {
+        @apply w-full px-4 py-3 rounded-md hover:opacity-90 font-medium;
+    }
+    .btn-primary {
+        @apply bg-primaryColor text-white;
+    }
+    .btn-outline {
+        @apply border-2 border-primaryColor text-primaryColor hover:bg-slate-100;
+    }
+}
+
 @layer utilities {
     .font-montserrat {
         font-family: 'Montserrat', sans-serif;

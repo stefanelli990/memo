@@ -1,31 +1,31 @@
 import { defineStore } from "pinia";
+import { collection, onSnapshot, doc, setDoc, deleteDoc, updateDoc, query, orderBy } from "firebase/firestore";
+import { db } from '../js/firebase';
+
+const notesCollectionRef = collection(db, "notes");
+const notesCollectionQuery = query(notesCollectionRef, orderBy("id", "desc"));
+
 
 export const useStoreNotes = defineStore("storeNotes", {
   state: () => {
     return {
       notes: [
-        {
-          id: 1,
-          title: "Buy Milk",
-          date: '21 May 1995',
-          description:
-            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-        },
-        {
-          id: 2,
-          title: "Eat Pizza",
-          date: '21 May 1995',
-          description:
-            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-        },
-        {
-          id: 3,
-          title: "Go to gym",
-          date: '21 May 1995',
-          description:
-            "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
-        },
+        // {
+        //   id: 1,
+        //   title: "Buy Milk",
+        //   date: '21 May 1995',
+        //   description:
+        //     "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+        // },
+        // {
+        //   id: 2,
+        //   title: "Eat Pizza",
+        //   date: '21 May 1995',
+        //   description:
+        //     "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+        // }
       ],
+      isLoading: false,
       searchTerm: ''
     };
   },
@@ -41,24 +41,73 @@ export const useStoreNotes = defineStore("storeNotes", {
    }
   },
   actions: {
-    addNote(note) {
-      this.notes.unshift(note)
-      console.log(this.notes)
-    },
-    updateNote(noteId, titleVal, descVal) {
-      const index = this.notes.findIndex(note => note.id === noteId);
+    async getNotes() {
+      // const querySnapshot = await getDocs(collection(db, "notes"));
+      // querySnapshot.forEach((doc) => {
+       
 
-      if (index !== -1) {
-        this.notes[index].title = titleVal;
-        this.notes[index].description = descVal;
-      }
+      //   let note = {
+      //     id: doc.id,
+      //     title: doc.data().title,
+      //     description: doc.data().description,
+      //     date: doc.data().date
+      //   }
+      //   this.notes.push(note);
+      // });
+      this.isLoading = false;
+      onSnapshot(notesCollectionQuery, (querySnapshot) => {
+        let notes = [];
+        querySnapshot.forEach((doc) => {
+          let note = {
+              id: doc.id,
+              title: doc.data().title,
+              description: doc.data().description,
+              date: doc.data().date
+              }
+        notes.push(note);
+        });
+        
+        this.notes = notes;
+          this.isLoading = true
+      });
+      
     },
-    deleteNote(noteId) {
-      const index = this.notes.findIndex(note => note.id === noteId);
+   async addNote(note) {
+      // this.notes.unshift(note)
+      // console.log(this.notes)
 
-      if(index !== -1) {
-        this.notes.splice(index, 1);
-      }
+      let currentDate = new Date().getTime()
+      let id = currentDate.toString()
+      
+      await setDoc(doc(notesCollectionRef, id), {
+        title: note.title,
+        description: note.description,
+        id: id,
+        date: note.date
+      });
+      
+    },
+  async  updateNote(noteId, titleVal, descVal) {
+      // const index = this.notes.findIndex(note => note.id === noteId);
+
+      // if (index !== -1) {
+      //   this.notes[index].title = titleVal;
+      //   this.notes[index].description = descVal;
+      // }
+
+   
+      await updateDoc(doc(notesCollectionRef, noteId), {
+        title: titleVal,
+        description: descVal
+      });
+    },
+   async deleteNote(noteId) {
+      // const index = this.notes.findIndex(note => note.id === noteId);
+
+      // if(index !== -1) {
+      //   this.notes.splice(index, 1);
+      // }
+      await deleteDoc(doc(notesCollectionRef, noteId));
     }
   }
 });
