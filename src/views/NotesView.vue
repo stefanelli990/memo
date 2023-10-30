@@ -60,6 +60,9 @@ import AppBtn from '../components/AppBtn.vue';
 import LoadingSpinner from '../components/LoadingSpinner.vue';
 
 
+
+
+
 const inputTitle = ref('');
 const inputDescription = ref('');
 
@@ -107,5 +110,6 @@ const addNewNote = () => {
       closeModal();
     }
 };
+
 
 </script>
