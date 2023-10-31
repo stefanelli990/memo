@@ -15,6 +15,9 @@ module.exports = {
         'darkColor': {
           DEFAULT: '#232323'
         }
+      },
+      backgroundImage: {
+        'auth-img': "linear-gradient(180deg, rgba(230, 75, 255, 0.50) 0%, rgba(230, 75, 255, 0.75) 100%), url('./src/assets/auth-img.jpg')"
       }
     }
   },

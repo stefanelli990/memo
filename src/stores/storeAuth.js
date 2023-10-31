@@ -31,7 +31,8 @@ export const useStoreAuth = defineStore("storeAuth", {
     },
     registerUser(credential) {
   
-        createUserWithEmailAndPassword(auth, credential.email, credential.password)
+        // createUserWithEmailAndPassword(auth, credential.email, credential.password)
+        createUserWithEmailAndPassword(auth, credential.email, credential.password, credential.firstName, credential.lastName)
         .then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
