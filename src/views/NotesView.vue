@@ -1,8 +1,9 @@
 <template>
-  <SearchNotes />
+  <div class="lg:ml-72">
+    <SearchNotes />
 
   <LoadingSpinner v-if="!storeNotes.isLoading"/>
-  <ul class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4 mb-4">
+  <ul class="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-4 lg:px-10 mb-4">
     <AddNote @open-modal="openModal" @close-modal="closeModal" />
     <NoteItem v-for="note in storeNotes.filterNotes" :key="note.id" :note="note"  @edit="editNote"/>
   </ul>
@@ -40,11 +41,12 @@
             ></textarea>
           </div>
           <div class="flex space-x-4">
-            <AppBtn v-if="!isEditing" caption="Add Note" type="btn-primary"/>
-            <AppBtn v-else caption="Update Note" type="btn-primary"/>
+            <AppBtn v-if="!isEditing" type="btn-primary">Add Note</AppBtn>
+            <AppBtn v-else type="btn-primary">Update Note</AppBtn>
           </div>
         </form>
       </AppModal>
+  </div>
 </template>
 
 <script setup>

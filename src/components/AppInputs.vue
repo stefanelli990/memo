@@ -3,7 +3,7 @@
             <label class="mb-1">{{ label }}</label>
             <input
               type="text"
-              class="bg-gray-100 p-4 rounded-md outline-primaryColor"
+              class="bg-gray-100 p-4 rounded-md outline-primaryColor placeholder:font-normal"
               :placeholder="placeholder"
               :value="value"
               :id="id"

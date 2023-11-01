@@ -9,13 +9,13 @@
         @apply font-montserrat;
       }
     body {
-        @apply bg-primaryColor-light min-h-screen;
+        @apply bg-primaryColor-light min-h-screen font-medium;
     }
 }
 
 @layer components {
     .btn {
-        @apply w-full px-4 py-3 rounded-md hover:opacity-90 font-medium;
+        @apply w-full px-4 py-3 rounded-md hover:opacity-90 flex items-center justify-center space-x-1;
     }
     .btn-primary {
         @apply bg-primaryColor text-white;
