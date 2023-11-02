@@ -33,13 +33,12 @@ const router = createRouter({
 
 // redirecting to the auth page when user is logged out and tries reaching to te other page via url
 
-router.beforeEach(async (to, from) => {
+router.beforeEach(async (to, from, next) => {
   const storeAuth = useStoreAuth();
-  if(!storeAuth.user.id && to.name !== 'auth') {
-    return { name: 'auth'}
-  }
-  if(storeAuth.user.id && to.name === 'auth') {
-    return false;
+  if (!storeAuth.user.id && to.name !== 'auth') {
+    next(false); // Cancel the navigation
+  } else {
+    next(); // Continue with the navigation
   }
 })
 

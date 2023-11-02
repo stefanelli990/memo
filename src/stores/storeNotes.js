@@ -31,7 +31,8 @@ export const useStoreNotes = defineStore("storeNotes", {
         // }
       ],
       isLoading: false,
-      searchTerm: ''
+      searchTerm: '',
+      sidebar: false
     };
   },
   getters: {
@@ -127,6 +128,13 @@ export const useStoreNotes = defineStore("storeNotes", {
       //   this.notes.splice(index, 1);
       // }
       await deleteDoc(doc(notesCollectionRef, noteId));
+    },
+    slideIn() {
+      console.log('slide in')
+      this.sidebar = true;
+    },
+    slideOut() {
+      this.sidebar = false;
     }
   }
 });
