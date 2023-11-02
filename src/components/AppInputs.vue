@@ -1,19 +1,19 @@
 <template>
-    <div class="flex flex-col mb-4">
-            <label class="mb-1">{{ label }}</label>
+    <div class="flex flex-col mb-3 text-left">
+            <label :for="props.for" class="mb-1 text-sm">{{ label }}</label>
             <input
-              type="text"
+              :type="props.type"
               class="bg-gray-100 p-4 rounded-md outline-primaryColor placeholder:font-normal"
-              :placeholder="placeholder"
-              :value="value"
-              :id="id"
-              :name="name"
+              :placeholder="props.placeholder"
+              :value="props.value"
+              :id="props.id"
+              :name="props.name"
             />
           </div>
 </template>
 
 <script setup>
 
-const props = defineProps(['label','placeholder','value','id','name'])
+const props = defineProps(['label','placeholder','value','id','name','type','for'])
 
 </script>

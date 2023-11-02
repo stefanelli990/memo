@@ -1,16 +1,7 @@
 <template>
-  <div
-    class="bg-white w-72 min-h-screen fixed top-0 left-0 shadow-xl p-10 lg:flex justify-between flex-col hidden" v-if="storeAuth.user.id"
-  >
+  <div class="bg-white w-72 min-h-screen z-10 fixed top-0 left-0 shadow-lg p-10 lg:flex justify-between flex-col hidden" v-if="storeAuth.user.id">
     <div>
-      <div 
-        class="text-2xl font-bold flex items-center space-x-2 mb-16"
-        ><Icon icon="mdi:notes" class="text-primaryColor" /><span
-          class="text-primaryColor"
-          >Notes</span
-        >
-        App</div>
-      
+      <AppLogo class="mb-16"/>
       <nav class="flex flex-col">
         <RouterLink
           to="/"
@@ -55,6 +46,7 @@ import { RouterLink, RouterView } from "vue-router";
 import { Icon } from "@iconify/vue";
 import { useStoreAuth } from "../stores/storeAuth";
 import AppBtn from "./AppBtn.vue";
+import AppLogo from "./AppLogo.vue";
 
 const storeAuth = useStoreAuth();
 

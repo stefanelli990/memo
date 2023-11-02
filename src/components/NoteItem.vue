@@ -7,7 +7,7 @@
           <Icon icon="tabler:dots" width="24" height="24" />
         </button>
       </div>
-      <p>{{ note.description }}</p>
+      <p class="font-normal">{{ note.description }}</p>
     </div>
     <div class="border-t border-t-gray-300 pt-2 text-sm text-gray-500 font-normal">
       {{ note.date }}
