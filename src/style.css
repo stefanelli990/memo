@@ -9,7 +9,10 @@
         @apply font-montserrat;
       }
     body {
-        @apply bg-primaryColor-light min-h-screen font-medium;
+        @apply font-medium;
+    }
+    main {
+        @apply bg-primaryColor-light text-white min-h-screen pt-32 px-4 pb-4 transition-all duration-300 lg:ml-72 lg:px-10 lg:pb-10;
     }
 }
 

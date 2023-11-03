@@ -1,5 +1,5 @@
 <template>
-  <li class="bg-white rounded-lg h-60 p-4 flex flex-col relative overflow-hidden">
+  <li class="bg-white rounded-lg h-60 p-4 flex flex-col relative text-darkColor">
     <div class="flex-1">
       <div class="flex justify-between items-start">
         <h2 class="text-xl font-semibold mb-4">{{ note.title }}</h2>

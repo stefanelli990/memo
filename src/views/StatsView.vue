@@ -1,3 +1,5 @@
 <template>
-    <h1>Stats view</h1>
+    <main>
+        <h1>Stats view</h1>
+    </main>
 </template>

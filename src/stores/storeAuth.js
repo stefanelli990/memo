@@ -1,72 +1,70 @@
-import { defineStore } from "pinia";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
-import { auth } from "../js/firebase";
-import { useStoreNotes } from '../stores/storeNotes';
+import { defineStore } from 'pinia'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from 'firebase/auth'
+import { auth } from '@/js/firebase'
+import { useStoreNotes } from '@/stores/storeNotes'
 
-export const useStoreAuth = defineStore("storeAuth", {
+export const useStoreAuth = defineStore('storeAuth', {
   state: () => {
-    return {
+    return { 
       user: {
         id: null,
         email: null,
-        firstName: null,
-        lastName: null,
+        fullName: null,
       }
-    };
+    }
   },
   actions: {
-    init() {
-      const storeNotes = useStoreNotes();
+    async init() {
+      const storeNotes = useStoreNotes()
 
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          this.user.id = user.uid;
-          this.user.email = user.email;
-          this.user.firstName = user.displayName; 
-          this.router.push('/');
-          storeNotes.init();
+          this.user.id = user.uid
+          this.user.email = user.email
+          this.user.fullName = user.displayName
+          this.router.push('/')
+          storeNotes.init()
         } else {
-          this.user = {};
-          this.router.replace('/auth');
-          storeNotes.clearNotes();
+          this.user = {}
+          this.router.replace('/auth')
+          storeNotes.clearNotes()
         }
-      });
+      })
     },
-    registerUser(credential) {
-      createUserWithEmailAndPassword(auth, credential.email, credential.password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          return updateProfile(user, {
-            displayName: credential.firstName
-          }).then(() => {
-            this.user.id = user.uid;
-            this.user.email = user.email;
-            this.user.firstName = credential.firstName;
-            this.user.lastName = credential.lastName;
-            this.router.push('/');
-          });
-        })
-        .catch((error) => {
-          console.log('error message', error.message);
+    async registerUser(credentials) {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
+        const user = userCredential.user;
+
+        // Update the user's profile
+        await updateProfile(user, {
+          displayName: `${credentials.firstName} ${credentials.lastName}`
         });
+
+        // Update the user's full name in your store
+        this.user.fullName = user.displayName;
+
+        // Console log success or handle it as needed
+        console.log('User registered successfully');
+      } catch (error) {
+        // Handle the error
+        console.log('Error registering user: ', error.message);
+      }
+    },
+    loginUser(credentials) {
+      signInWithEmailAndPassword(auth, credentials.email, credentials.password).then((userCredential) => {
+        const user = userCredential.user
+        // console.log('user: ', user)
+      }).catch((error) => {
+        // console.log('error.message: ', error.message)
+      })
     },
     logoutUser() {
       signOut(auth).then(() => {
-        console.log('user sign out');
+        // console.log('User signed out')
       }).catch((error) => {
-        console.log(error.message);
-      });
-    },
-    loginUser(credential) {
-      signInWithEmailAndPassword(auth, credential.email, credential.password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          this.user.firstName = user.displayName; 
-          this.router.push('/');
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-    },
-  },
-});
+        // console.log(error.message)
+      })
+    }
+  }
+})

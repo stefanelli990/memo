@@ -1,52 +1,53 @@
 <template>
-  <div class="lg:ml-72">
+  <main>
     <SearchNotes />
 
-  <LoadingSpinner v-if="!storeNotes.isLoading"/>
-  <ul class="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 px-4 lg:px-10 mb-4">
-    <AddNote @open-modal="openModal" @close-modal="closeModal" />
-    <NoteItem v-for="note in storeNotes.filterNotes" :key="note.id" :note="note"  @edit="editNote"/>
-  </ul>
-  <AppModal v-if="modalIsVisible" @close-modal="closeModal">
-        <div class="flex justify-between items-center mb-8">
-          <h2 class="text-xl font-semibold">{{ !isEditing ? 'Add New Note' : 'Edit Note'}}</h2>
-          <button @click="closeModal">
-            <Icon
-              icon="iconamoon:close"
-              width="28"
-              height="28"
-              class="text-gray-400"
-            />
-          </button>
+  
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 ">
+      <AddNote @open-modal="openModal" @close-modal="closeModal" />
+      <NoteItem v-for="note in storeNotes.filterNotes" :key="note.id" :note="note"  @edit="editNote"/>
+    </ul>
+    <AppModal v-if="modalIsVisible" @close-modal="closeModal">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-xl font-semibold">{{ !isEditing ? 'Add New Note' : 'Edit Note'}}</h2>
+        <button @click="closeModal">
+          <Icon
+            icon="iconamoon:close"
+            width="28"
+            height="28"
+            class="text-gray-400"
+          />
+        </button>
+      </div>
+      <form @submit.prevent="addNewNote">
+        <div class="flex flex-col mb-4">
+          <label for="title" class="mb-1">Title</label>
+          <input
+            v-model="inputTitle"
+            id="title"
+            name="title"
+            type="text"
+            class="bg-gray-100 p-4 rounded-md outline-primaryColor"
+          />
         </div>
-        <form @submit.prevent="addNewNote">
-          <div class="flex flex-col mb-4">
-            <label for="title" class="mb-1">Title</label>
-            <input
-              v-model="inputTitle"
-              id="title"
-              name="title"
-              type="text"
-              class="bg-gray-100 p-4 rounded-md outline-primaryColor"
-            />
-          </div>
-          <div class="flex flex-col mb-4">
-            <label for="description" class="mb-1">Description</label>
-            <textarea
-              v-model="inputDescription"
-              name="description"
-              id="description"
-              rows="8"
-              class="bg-gray-100 p-4 resize-none rounded-md outline-primaryColor"
-            ></textarea>
-          </div>
-          <div class="flex space-x-4">
-            <AppBtn v-if="!isEditing" type="btn-primary">Add Note</AppBtn>
-            <AppBtn v-else type="btn-primary">Update Note</AppBtn>
-          </div>
-        </form>
-      </AppModal>
-  </div>
+        <div class="flex flex-col mb-4">
+          <label for="description" class="mb-1">Description</label>
+          <textarea
+            v-model="inputDescription"
+            name="description"
+            id="description"
+            rows="8"
+            class="bg-gray-100 p-4 resize-none rounded-md outline-primaryColor"
+          ></textarea>
+        </div>
+        <div class="flex space-x-4">
+          <AppBtn v-if="!isEditing" type="btn-primary">Add Note</AppBtn>
+          <AppBtn v-else type="btn-primary">Update Note</AppBtn>
+        </div>
+      </form>
+    </AppModal>
+  </main>
+  <LoadingSpinner v-if="!storeNotes.isLoading"/>
 </template>
 
 <script setup>
@@ -60,10 +61,6 @@ import NoteItem from "../components/NoteItem.vue";
 import AppModal from "../components/AppModal.vue";
 import AppBtn from '../components/AppBtn.vue';
 import LoadingSpinner from '../components/LoadingSpinner.vue';
-
-
-
-
 
 const inputTitle = ref('');
 const inputDescription = ref('');
