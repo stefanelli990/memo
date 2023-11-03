@@ -4,7 +4,12 @@
       <div class="flex justify-between items-center">
         <AppLogo class="my-8 lg:my-0 lg:mb-10"/>
         <button @click="storeNotes.slideOut" class="lg:hidden">
-          <Icon icon="simple-line-icons:close" width="28" height="28"/>
+          <Icon
+            icon="iconamoon:close"
+            width="28"
+            height="28"
+            class="text-gray-400"
+          />
         </button>
       </div>
       <nav class="flex flex-col">
@@ -33,7 +38,7 @@
             'text-darkColor p-5 pl-10 -ml-4 -mr-4 lg:-ml-10 lg:-mr-10 font-medium border-l-8',
           ]"
         >
-          About
+          About App
         </RouterLink>
       </nav>
     </div>

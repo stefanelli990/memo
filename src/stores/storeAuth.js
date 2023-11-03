@@ -13,6 +13,26 @@ export const useStoreAuth = defineStore('storeAuth', {
       }
     }
   },
+  getters: {
+    // Add this getter to extract the first word from fullName
+    firstNameFromFullName() {
+      if (this.user.fullName) {
+        const fullName = this.user.fullName;
+        const firstName = fullName.split(' ')[0];
+        return firstName;
+      }
+      return null;
+    },
+    initialsFromFullName() {
+      if (this.user.fullName) {
+        const fullName = this.user.fullName;
+        const words = fullName.split(' ');
+        const initials = words.map(word => word.charAt(0)).join('');
+        return initials;
+      }
+      return null;
+    },
+  },
   actions: {
     async init() {
       const storeNotes = useStoreNotes()
