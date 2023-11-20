@@ -14,13 +14,17 @@ module.exports = {
         },
         'darkColor': {
           DEFAULT: '#232323'
-        }
+        },
+        'lightYellow': '#FFFFCC',
+        'lightBlue': '#ADD8E6 ',
+        'lightPink': '#FFEBEB',
+        'lightGreen': '#98FB98',
+        'lightLavander': '#E6E6FA'
       },
-      backgroundImage: {
-        'auth-img': "linear-gradient(180deg, rgba(230, 75, 255, 0.50) 0%, rgba(230, 75, 255, 0.75) 100%), url('/src/assets/auth-img.jpg')"
-      }
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 

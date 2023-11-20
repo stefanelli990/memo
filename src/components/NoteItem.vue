@@ -1,5 +1,5 @@
 <template>
-  <li class="bg-white rounded-lg h-60 p-4 flex flex-col relative text-darkColor">
+  <li v-for="note in storeNotes.notes" :key="note.id" class="bg-white rounded-2xl h-60 p-4 flex flex-col shadow-sm relative">
     <div class="flex-1">
       <div class="flex justify-between items-start">
         <h2 class="text-xl font-semibold mb-4">{{ note.title }}</h2>
@@ -9,7 +9,7 @@
       </div>
       <p class="font-normal">{{ note.description }}</p>
     </div>
-    <div class="border-t border-t-gray-300 pt-2 text-sm text-gray-500 font-normal">
+    <div class="border-t border-t-gray-200 pt-2 text-sm font-normal">
       {{ note.date }}
       </div>
     <div class="absolute right-4 top-10 bg-white border border-gray-300 rounded-md overflow-hidden" v-show="dropdownIsVisible" ref="dropdown"> 
