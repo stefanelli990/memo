@@ -1,7 +1,7 @@
 <template>
   <main class="p-4">
     <AppHeader/>
-    <SearchNotes />
+    <SearchNotes/>
     <NoteList/>
     <AppModal v-if="storeNotes.modalIsVisible">
       <div class="flex justify-between items-center mb-8">
@@ -63,6 +63,7 @@
       </form>
     </AppModal>
     <AddNote />
+    <NoData/>
   </main>
 </template>
 
@@ -76,6 +77,7 @@ import AppBtn from './components/AppBtn.vue'
 import NoteList from './components/NoteList.vue'
 import { Icon } from '@iconify/vue'
 import { useStoreNotes } from "./stores/storeNotes"
+import NoData from './components/NoData.vue'
 
 const storeNotes = useStoreNotes();
 

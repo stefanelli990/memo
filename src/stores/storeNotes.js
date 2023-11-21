@@ -8,11 +8,21 @@ export const useStoreNotes = defineStore('storeNotes', {
       inputDescription: '',
       pickedColor: 'bg-lightYellow',
       modalIsVisible: false,
-      isEditing: false
+      isEditing: false,
+      searchTerm: '',
+      currentId: null
     }
   },
   getters: {
-    double: (state) => state.count * 2
+    filterNotes: (state) => {
+      const search = state.searchTerm.toLowerCase().trim();
+  
+      if(search === '') {
+        return state.notes
+      } else {
+        return state.notes.filter(note => note.title.toLowerCase().includes(search))
+      }
+     }
   },
   actions: {
     addNote() {
@@ -28,22 +38,26 @@ export const useStoreNotes = defineStore('storeNotes', {
         this.notes.unshift(note)
         this.inputTitle = '';
         this.inputDescription = '';
+        this.pickedColor = 'bg-lightYellow',
         this.updateLocalStorage()
         this.closeModal();
         } else if(this.isEditing && this.inputTitle && this.inputDescription && this.pickedColor) {
           
-          closeModal();
+          const index = this.notes.findIndex((note) => note.id === this.currentId)
+          console.log(index)
+
+          this.notes[index].title = this.inputTitle
+          this.notes[index].description = this.inputDescription
+          this.notes[index].color = this.pickedColor
+
+          this.updateLocalStorage()
+          this.closeModal()
         }
-      
     },
     deleteNote(id) {
       console.log(id)
       this.notes = this.notes.filter(note => note.id !== id)
       this.updateLocalStorage()
-    },
-    editNote() {
-      console.log('edit',title,description,color)
-      
     },
     addNoteModal() {
       this.modalIsVisible = true
@@ -52,13 +66,16 @@ export const useStoreNotes = defineStore('storeNotes', {
       this.modalIsVisible = true
       this.isEditing = true
 
+      // fetching id of last opened note in edit
+      this.currentId = id
+
       // find index function
       const index = this.notes.findIndex((note) => note.id === id)
 
       this.inputTitle = this.notes[index].title
       this.inputDescription = this.notes[index].description
       this.pickedColor = this.notes[index].color
-      this.updateLocalStorage()
+      
     },
     closeModal() {
       this.modalIsVisible = false
