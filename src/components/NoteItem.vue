@@ -1,20 +1,20 @@
 <template>
-  <li v-for="note in storeNotes.notes" :key="note.id" class="bg-white rounded-2xl h-60 p-4 flex flex-col shadow-sm relative">
+  <li class="rounded-2xl h-60 p-4 flex flex-col relative" :class="color">
     <div class="flex-1">
       <div class="flex justify-between items-start">
-        <h2 class="text-xl font-semibold mb-4">{{ note.title }}</h2>
+        <h2 class="text-2xl font-semibold mb-4">{{ title }}</h2>
         <button @click="toggleDropdown" ref="toggle">
-          <Icon icon="tabler:dots" width="24" height="24" />
+          <Icon icon="tabler:dots" width="24" height="24"/>
         </button>
       </div>
-      <p class="font-normal">{{ note.description }}</p>
+      <p>{{ description }}</p>
     </div>
-    <div class="border-t border-t-gray-200 pt-2 text-sm font-normal">
-      {{ note.date }}
+    <div class="border-t border-t-darkColor/10 pt-2 text-sm">
+      {{ date }}
       </div>
     <div class="absolute right-4 top-10 bg-white border border-gray-300 rounded-md overflow-hidden" v-show="dropdownIsVisible" ref="dropdown"> 
-      <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" ref="editButton" @click="$emit('edit',note.id, note.title, note.description)"><Icon icon="tabler:edit" width="20"/><span>Edit</span></button>
-      <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" @click="storeNotes.deleteNote(note.id)"><Icon icon="ph:trash-bold" width="20"/><span>Delete</span></button>
+      <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" ref="editButton" @click="storeNotes.editModal(id)"><Icon icon="tabler:edit" width="20"/><span>Edit</span></button>
+      <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" @click="storeNotes.deleteNote(id)"><Icon icon="ph:trash-bold" width="20"/><span>Delete</span></button>
     </div>
   </li>
 </template>
@@ -33,8 +33,7 @@ const editButton = ref(null)
 
 const storeNotes = useStoreNotes();
 
-const props = defineProps(["note"]);
-const emits = defineEmits(['edit']);
+const props = defineProps(['title','description','color','date','id'])
 
 const toggleDropdown = () => {
   dropdownIsVisible.value = !dropdownIsVisible.value;
@@ -45,8 +44,6 @@ onClickOutside([dropdown,editButton], () => {
 }, {
   ignore: [toggle]
 });
-
-
 
 </script>
 

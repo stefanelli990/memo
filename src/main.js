@@ -10,6 +10,8 @@ const pinia = createPinia()
 
 app.use(pinia)
 
+const storeNotes = useStoreNotes()
+storeNotes.loadFromLocalStorage()
 
 app.mount('#app')
 

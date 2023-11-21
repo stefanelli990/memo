@@ -18,7 +18,7 @@
 
 @layer components {
     .btn {
-        @apply w-full px-4 py-3 rounded-md hover:opacity-90 flex items-center justify-center space-x-1;
+        @apply w-full px-4 py-3 rounded-2xl hover:opacity-90 flex items-center justify-center space-x-1;
     }
     .btn-primary {
         @apply bg-primaryColor text-white;
