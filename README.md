@@ -1,8 +1,10 @@
 # Notes App
 
+## Description
+
 Notes App is a sleek and intuitive notes app, designed to streamline your note-taking experience.
 
-**[Live Preview](https://precious-kelpie-280460.netlify.app/):** Try the Notes App live
+**[Live Preview](https://precious-kelpie-280460.netlify.app/):** Try the Notes App live.
 
 ## Features:
 
