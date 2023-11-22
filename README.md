@@ -2,9 +2,7 @@
 
 Notes App is a sleek and intuitive notes app, designed to streamline your note-taking experience.
 
-**[Live Preview](https://precious-kelpie-280460.netlify.app/)** Try the Notes App live
-
-## Recommended IDE Setup
+**[Live Preview](https://precious-kelpie-280460.netlify.app/):** Try the Notes App live
 
 ## Features:
 
@@ -23,16 +21,9 @@ Notes App is a sleek and intuitive notes app, designed to streamline your note-t
 
 ## Installation:
 
-1. **Clone the repository:**
-   ```bash
-   git clone [repository-url]
-   
-2. **Install the required dependencies using npm install:**
-   ```bash
-   npm install
-   
-3. **Start the development server with npm run dev:**
-   ```bash
-   npm run dev
-   
-4. **Open your browser and navigate to http://localhost:5173 to use the app:**
+To run this project locally, follow these steps:
+
+1. Clone the repository.
+2. Install the required dependencies using npm install.
+3. Start the development server with npm run dev.
+4. Open your browser and navigate to http://localhost:5173 to use the app.
