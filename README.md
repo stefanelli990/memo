@@ -1,4 +1,4 @@
-# notes-app
+# Notes App
 
 Notes App is a sleek and intuitive notes app, designed to streamline your note-taking experience.
 
