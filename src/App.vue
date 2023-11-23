@@ -17,28 +17,28 @@
       </div>
       <form @submit.prevent="storeNotes.addNote">
         <div class="flex flex-col mb-4">
-          <label for="title" class="mb-1">Title</label>
+          <label for="title" class="mb-1 text-sm">Title</label>
           <input
             v-model="storeNotes.inputTitle"
             id="title"
             name="title"
             type="text"
-            class="bg-gray-100 p-4 rounded-2xl focus:ring-2 focus:ring-primaryColor border-none"
+            class="bg-gray-100 p-4 w-full rounded-2xl focus:ring-2 focus:ring-primaryColor border-none"
           />
         </div>
         <div class="flex flex-col mb-4">
-          <label for="description" class="mb-1">Description</label>
+          <label for="description" class="mb-1 text-sm">Description</label>
           <textarea
             v-model="storeNotes.inputDescription"
             name="description"
             id="description"
             rows="4"
-            class="bg-gray-100 p-4 resize-none rounded-2xl focus:ring-2 focus:ring-primaryColor border-none"
+            class="bg-gray-100 p-4 w-full resize-none rounded-2xl focus:ring-2 focus:ring-primaryColor border-none"
           ></textarea>
         </div>
         <div class=" mb-8">
-          <label class="mb-1">Color</label>
-          <div class="flex space-x-4 mt-2">
+          <label class="mb-1 text-sm">Color</label>
+          <div class="flex gap-4 mt-2 flex-wrap">
             <label>
               <input v-model="storeNotes.pickedColor" value="bg-lightYellow" type="radio" class="h-12 w-12 cursor-pointer checked:bg-lightYellow text-lightYellow bg-lightYellow border border-gray-100 checked:ring-2 checked:ring-offset-2 checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor" name="radio"/>
             </label>
