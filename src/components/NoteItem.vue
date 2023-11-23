@@ -12,10 +12,12 @@
     <div class="border-t border-t-darkColor/10 pt-2 text-sm">
       {{ date }}
       </div>
-    <div class="absolute right-4 top-10 bg-white border border-gray-300 rounded-md overflow-hidden" v-show="dropdownIsVisible" ref="dropdown"> 
+    <Transition>
+      <div class="absolute right-4 top-10 bg-white border border-gray-300 rounded-md overflow-hidden" v-show="dropdownIsVisible" ref="dropdown"> 
       <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" ref="editButton" @click="storeNotes.editModal(id)"><Icon icon="tabler:edit" width="20"/><span>Edit</span></button>
       <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" @click="storeNotes.deleteNote(id)"><Icon icon="ph:trash-bold" width="20"/><span>Delete</span></button>
     </div>
+    </Transition>
   </li>
 </template>
 
@@ -46,4 +48,33 @@ onClickOutside([dropdown,editButton], () => {
 });
 
 </script>
+
+<style scoped>
+
+.v-enter-from {
+opacity: 0;
+scale: .5;
+}
+
+.v-enter-to {
+opacity: 1;
+scale: 1;
+}
+
+.v-leave-from {
+opacity: 1;
+scale: 1;
+}
+
+.v-leave-to {
+opacity: 0;
+scale: .5;
+}
+
+.v-enter-active,
+.v-leave-active {
+transition: all 0.2s ease;
+}
+
+</style>
 

@@ -3,7 +3,7 @@
     <AppHeader/>
     <SearchNotes/>
     <NoteList/>
-    <AppModal v-if="storeNotes.modalIsVisible">
+    <AppModal>
       <div class="flex justify-between items-center mb-8">
         <h2 class="text-xl font-semibold">{{ !storeNotes.isEditing ? 'Add New Note' : 'Edit Note'}}</h2>
         <button @click="storeNotes.closeModal">
@@ -82,4 +82,3 @@ import NoData from './components/NoData.vue'
 const storeNotes = useStoreNotes();
 
 </script>
-
