@@ -13,7 +13,6 @@ Notes App is a sleek and intuitive notes app, designed to streamline your note-t
 - **User-Friendly Interface:** An intuitive design for a smooth and efficient user experience.
 - **Responsive Design:** The app adapts to various screen sizes, allowing you to manage your notes on different devices.
 - **Data Persistence:** Notes are stored in local storage, making them available even after a page.
-- **Animations:** Enjoy a visually appealing experience with smooth animations enhancing interactions throughout the application. 
 
 ## Technologies Used:
 
