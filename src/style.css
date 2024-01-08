@@ -9,10 +9,13 @@
         @apply font-montserrat;
       }
     body {
-        @apply  text-darkColor font-medium;
+        @apply  text-darkColor font-medium dark:bg-slate-900 dark:text-white;
     }
     [type='radio']:checked {
         background-image: none;
+    }
+    main {
+        @apply p-4
     }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <li class="rounded-2xl h-60 p-4 flex flex-col relative" :class="color">
+  <li class="rounded-2xl h-60 p-4 flex flex-col relative text-darkColor" :class="color">
     <div class="flex-1">
       <div class="flex justify-between items-start">
         <h2 class="text-2xl font-semibold mb-4">{{ title }}</h2>

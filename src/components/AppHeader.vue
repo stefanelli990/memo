@@ -1,6 +1,23 @@
 <template>
-    <header class="max-w-xl mx-auto px-4 text-center text-4xl font-bold mt-8 mb-8">
-      Notes App
+    <header class="shadow-lg shadow-slate-100 dark:bg-slate-900 dark:shadow-slate-950/40">
+      <div class="max-w-6xl mx-auto px-4 py-5 flex justify-between items-center">
+        <h1 class="text-2xl sm:text-3xl font-bold dark:text-white">Notes App</h1>
+        <button @click="toggleDark()" class="flex items-center space-x-1 dark:text-white">
+          <Icon v-if="!isDark" icon="material-symbols-light:dark-mode-rounded" width="24" height="24"/>
+          <Icon v-else icon="fluent:weather-sunny-28-filled" width="24" height="24"/>
+          <span class="font-semibold">{{ !isDark ? 'Dark' : 'Light' }} Mode</span>
+        </button>
+      </div>
     </header>
 </template>
+
+<script setup>
+
+import { Icon } from '@iconify/vue'
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+
+</script>
 

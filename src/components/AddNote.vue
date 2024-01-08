@@ -1,5 +1,5 @@
 <template>
-    <button @click="storeNotes.addNoteModal" class="bg-primaryColor h-20 w-20 fixed bottom-8 right-8 rounded-full shadow-md text-white flex items-center justify-center cursor-pointer hover:opacity-80">
+    <button @click="storeNotes.addNoteModal" class="bg-primaryColor h-20 w-20 fixed bottom-4 right-4 sm:bottom-8 sm:right-8 rounded-full shadow-md text-white flex items-center justify-center cursor-pointer hover:opacity-80">
       <Icon width="40" height="40" icon="fluent:tab-add-20-filled"/>
     </button>
 </template>
