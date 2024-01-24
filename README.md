@@ -13,6 +13,7 @@ MemoVue is a sleek and intuitive notes app, designed to streamline your note-tak
 - **User-Friendly Interface:** An intuitive design for a smooth and efficient user experience.
 - **Responsive Design:** The app adapts to various screen sizes, allowing you to manage your notes on different devices.
 - **Data Persistence:** Notes are stored in local storage, making them available even after a page.
+- **Dark Mode:** Enjoy a visually comfortable experience with the option to switch to Dark Mode.
 
 ## Technologies Used:
 
