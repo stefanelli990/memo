@@ -43,19 +43,6 @@ export const useStoreNotes = defineStore('storeNotes', {
         this.pickedColor = 'bg-lightYellow',
         this.updateLocalStorage()
         this.closeModal()
-        } else if(!this.inputTitle && !this.inputDescription) {
-          this.errorTitle = true
-          this.errorDesc = true
-        }  else if(this.inputTitle) {
-          this.errorTitle = false
-          this.errorDesc = true
-        } else if(this.inputDescription) {
-          this.errorDesc = false
-          this.errorTitle = true
-        } else if(!this.inputTitle) {
-          this.errorTitle = true
-        } else if(!this.inputDescription) {
-          this.errorDesc = true
         } else if(this.isEditing && this.inputTitle && this.inputDescription && this.pickedColor) {
           const index = this.notes.findIndex((note) => note.id === this.currentId)
           console.log(index)
@@ -64,7 +51,16 @@ export const useStoreNotes = defineStore('storeNotes', {
           this.notes[index].color = this.pickedColor
           this.updateLocalStorage()
           this.closeModal()
-        }
+        } else if(!this.inputTitle && !this.inputDescription) {
+          this.errorTitle = true
+          this.errorDesc = true
+        }  else if(this.inputTitle && !this.inputDescription) {
+          this.errorTitle = false
+          this.errorDesc = true
+        } else if(this.inputDescription && !this.inputTitle) {
+          this.errorDesc = false
+          this.errorTitle = true
+        } 
     },
     deleteNote(id) {
       console.log(id)
@@ -87,7 +83,6 @@ export const useStoreNotes = defineStore('storeNotes', {
       this.inputTitle = this.notes[index].title
       this.inputDescription = this.notes[index].description
       this.pickedColor = this.notes[index].color
-      
     },
     closeModal() {
       this.modalIsVisible = false
