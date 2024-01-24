@@ -1,7 +1,6 @@
 <template>
   <AppHeader/>
   <main>
-    
     <SearchNotes/>
     <NoteList/>
     <AppModal>
@@ -24,8 +23,9 @@
             id="title"
             name="title"
             type="text"
-            class="bg-gray-100 p-4 w-full rounded-2xl focus:ring-2 focus:ring-primaryColor border-none dark:bg-slate-950"
+            class="bg-gray-100 p-4 w-full rounded-2xl focus:ring-2 focus:ring-primaryColor border-none dark:bg-slate-800"
           />
+          <ErrorMsg v-show="storeNotes.errorTitle" message="Please enter a title."/>
         </div>
         <div class="flex flex-col mb-4">
           <label for="description" class="mb-1 text-sm">Description</label>
@@ -34,8 +34,9 @@
             name="description"
             id="description"
             rows="4"
-            class="bg-gray-100 p-4 w-full resize-none rounded-2xl focus:ring-2 focus:ring-primaryColor border-none dark:bg-slate-950"
+            class="bg-gray-100 p-4 w-full resize-none rounded-2xl focus:ring-2 focus:ring-primaryColor border-none dark:bg-slate-800"
           ></textarea>
+          <ErrorMsg v-show="storeNotes.errorDesc" message="Please, enter a description."/>
         </div>
         <div class=" mb-8">
           <label class="mb-1 text-sm">Color</label>
@@ -79,6 +80,7 @@ import NoteList from './components/NoteList.vue'
 import { Icon } from '@iconify/vue'
 import { useStoreNotes } from "./stores/storeNotes"
 import NoData from './components/NoData.vue'
+import ErrorMsg from './components/ErrorMsg.vue'
 
 const storeNotes = useStoreNotes();
 

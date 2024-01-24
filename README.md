@@ -1,10 +1,10 @@
-# Notes App
+# MemoVue
 
 ## Description
 
-Notes App is a sleek and intuitive notes app, designed to streamline your note-taking experience.
+MemoVue is a sleek and intuitive notes app, designed to streamline your note-taking experience.
 
-**[Live Preview](https://precious-kelpie-280460.netlify.app/):** Try the Notes App live.
+**[Live Preview](https://precious-kelpie-280460.netlify.app/):** Try the MemoVue live.
 
 ## Features:
 

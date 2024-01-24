@@ -10,7 +10,9 @@ export const useStoreNotes = defineStore('storeNotes', {
       modalIsVisible: false,
       isEditing: false,
       searchTerm: '',
-      currentId: null
+      currentId: null,
+      errorTitle: false,
+      errorDesc: false
     }
   },
   getters: {
@@ -27,7 +29,7 @@ export const useStoreNotes = defineStore('storeNotes', {
   actions: {
     addNote() {
       if(!this.isEditing && this.inputTitle && this.inputDescription && this.pickedColor) {
-        const options = { day: "numeric", month: "long", year: "numeric" };
+        const options = { day: "numeric", month: "long", year: "numeric" }
         const note = {
             id: uuidv4(),
             title: this.inputTitle,
@@ -40,16 +42,26 @@ export const useStoreNotes = defineStore('storeNotes', {
         this.inputDescription = '';
         this.pickedColor = 'bg-lightYellow',
         this.updateLocalStorage()
-        this.closeModal();
+        this.closeModal()
+        } else if(!this.inputTitle && !this.inputDescription) {
+          this.errorTitle = true
+          this.errorDesc = true
+        }  else if(this.inputTitle) {
+          this.errorTitle = false
+          this.errorDesc = true
+        } else if(this.inputDescription) {
+          this.errorDesc = false
+          this.errorTitle = true
+        } else if(!this.inputTitle) {
+          this.errorTitle = true
+        } else if(!this.inputDescription) {
+          this.errorDesc = true
         } else if(this.isEditing && this.inputTitle && this.inputDescription && this.pickedColor) {
-          
           const index = this.notes.findIndex((note) => note.id === this.currentId)
           console.log(index)
-
           this.notes[index].title = this.inputTitle
           this.notes[index].description = this.inputDescription
           this.notes[index].color = this.pickedColor
-
           this.updateLocalStorage()
           this.closeModal()
         }
@@ -83,6 +95,8 @@ export const useStoreNotes = defineStore('storeNotes', {
       this.inputTitle = ''
       this.inputDescription = ''
       this.pickedColor = 'bg-lightYellow'
+      this.errorTitle = false
+      this.errorDesc = false
     },
     // Function to update local storage
     updateLocalStorage() {
