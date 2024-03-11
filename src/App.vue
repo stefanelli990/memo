@@ -1,7 +1,7 @@
 <template>
   <AppHeader/>
   <main>
-    <SearchNotes/>
+    <SearchNotes v-if="storeNotes.notes.length"/>
     <NoNotes v-if="!storeNotes.filterNotes.length && storeNotes.searchTerm"/>
     <NoteList v-else/>
     <AppModal>
@@ -80,6 +80,6 @@ import { useStoreNotes } from "./stores/storeNotes"
 import ErrorMsg from './components/ErrorMsg.vue'
 import NoNotes from './components/NoNotes.vue'
 
-const storeNotes = useStoreNotes();
+const storeNotes = useStoreNotes()
 
 </script>

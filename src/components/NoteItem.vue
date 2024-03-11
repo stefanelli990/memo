@@ -1,5 +1,5 @@
 <template>
-  <li class="rounded-2xl h-60 p-4 flex flex-col relative text-darkColor" :class="color">
+  <li class="w-full rounded-2xl h-60 p-4 flex flex-col relative text-darkColor" :class="color">
     <div class="flex-1">
       <div class="flex justify-between items-start">
         <h2 class="text-2xl font-semibold mb-4">{{ title }}</h2>
@@ -22,28 +22,28 @@
 <script setup>
 
 import { onClickOutside } from '@vueuse/core'
-import { Icon } from "@iconify/vue";
-import { ref } from 'vue';
-import { useStoreNotes } from '../stores/storeNotes';
+import { Icon } from "@iconify/vue"
+import { ref } from 'vue'
+import { useStoreNotes } from '../stores/storeNotes'
 
-const dropdownIsVisible = ref(false);
-const dropdown = ref(null);
-const toggle = ref(null);
+const dropdownIsVisible = ref(false)
+const dropdown = ref(null)
+const toggle = ref(null)
 const editButton = ref(null)
 
-const storeNotes = useStoreNotes();
+const storeNotes = useStoreNotes()
 
 const props = defineProps(['title','description','color','date','id'])
 
 const toggleDropdown = () => {
-  dropdownIsVisible.value = !dropdownIsVisible.value;
+  dropdownIsVisible.value = !dropdownIsVisible.value
 };
 
 onClickOutside([dropdown,editButton], () => {
   dropdownIsVisible.value = false
 }, {
   ignore: [toggle]
-});
+})
 
 </script>
 
