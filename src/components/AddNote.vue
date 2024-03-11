@@ -1,7 +1,8 @@
 <template>
-    <button @click="storeNotes.addNoteModal" class="bg-primaryColor h-20 w-20 fixed bottom-4 right-4 sm:bottom-8 sm:right-8 rounded-full shadow-md text-white flex items-center justify-center cursor-pointer hover:opacity-80">
-      <Icon width="40" height="40" icon="fluent:tab-add-20-filled"/>
-    </button>
+    <li @click="storeNotes.addNoteModal" class="bg-white text-primaryColor max-w-sm mx-auto h-60 w-full rounded-2xl flex items-center justify-center flex-col space-y-4 cursor-pointer shadow-md shadow-slate-200/50 dark:bg-slate-800 dark:shadow-slate-900/50">
+      <Icon icon="bi:plus-circle-dotted" width="75" height="75" />
+      <span class="text-lg font-bold">Add New Note</span>
+    </li>
 </template>
 
 <script setup>
