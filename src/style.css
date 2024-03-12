@@ -15,7 +15,7 @@
         background-image: none;
     }
     main {
-        @apply p-4
+        @apply px-4
     }
 }
 
