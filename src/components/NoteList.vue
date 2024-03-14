@@ -1,6 +1,6 @@
 <template>
-  <ul class="max-w-6xl mx-auto grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <div v-if="!storeNotes.filterNotes.length" class="col-span-3 mt-8 sm:mt-16">
+  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div v-if="!storeNotes.filterNotes.length" class="col-span-3">
       <AddNote/>
       <h3 class="mt-8 text-lg max-w-md mx-auto text-center font-semibold">Ready to capture your ideas? Create your note and begin your note-taking journey!</h3>
     </div>

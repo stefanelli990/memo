@@ -1,9 +1,7 @@
 <template>
   <AppHeader/>
   <main>
-    <SearchNotes v-if="storeNotes.notes.length"/>
-    <NoNotes v-if="!storeNotes.filterNotes.length && storeNotes.searchTerm"/>
-    <NoteList v-else/>
+    
     <AppModal>
       <div class="flex justify-between items-center mb-8">
         <h2 class="text-xl font-semibold">{{ !storeNotes.isEditing ? 'Add New Note' : 'Edit Note'}}</h2>
@@ -66,19 +64,18 @@
       </form>
     </AppModal>
   </main>
+  <RouterView />
 </template>
 
 <script setup>
 
 import AppHeader from './components/AppHeader.vue'
-import SearchNotes from "./components/SearchNotes.vue"
 import AppModal from "./components/AppModal.vue"
 import AppBtn from './components/AppBtn.vue'
-import NoteList from './components/NoteList.vue'
 import { Icon } from '@iconify/vue'
-import { useStoreNotes } from "./stores/storeNotes"
 import ErrorMsg from './components/ErrorMsg.vue'
-import NoNotes from './components/NoNotes.vue'
+
+import { useStoreNotes } from "./stores/storeNotes"
 
 const storeNotes = useStoreNotes()
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
     * {
-        @apply font-montserrat;
+        @apply font-family;
       }
     body {
         @apply bg-slate-50 text-darkColor font-medium dark:bg-slate-900 dark:text-white;
@@ -15,7 +15,7 @@
         background-image: none;
     }
     main {
-        @apply px-4
+        @apply px-4 mt-16 max-w-6xl mx-auto;
     }
 }
 
@@ -32,7 +32,10 @@
 }
 
 @layer utilities {
-    .font-montserrat {
+    .font-family {
         font-family: 'Montserrat', sans-serif;
+    }
+    .active-link {
+        @apply text-primaryColor;
     }
 }
