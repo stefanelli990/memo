@@ -29,6 +29,10 @@
     .btn-outline {
         @apply border-2 border-primaryColor text-primaryColor hover:bg-slate-100;
     }
+    .btn-circle {
+        @apply text-primaryColor flex items-center justify-center h-10 w-10 rounded-full bg-primaryColor-light dark:bg-slate-700;
+    }
+   
 }
 
 @layer utilities {

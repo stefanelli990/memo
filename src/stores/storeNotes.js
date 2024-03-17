@@ -4,6 +4,7 @@ export const useStoreNotes = defineStore('storeNotes', {
   state: () => {
     return { 
       notes: [],
+      favNotes: [],
       inputTitle: '',
       inputDescription: '',
       pickedColor: 'bg-lightYellow',
@@ -35,7 +36,8 @@ export const useStoreNotes = defineStore('storeNotes', {
             title: this.inputTitle,
             description: this.inputDescription,
             date: new Date().toLocaleDateString(undefined, options),
-            color: this.pickedColor
+            color: this.pickedColor,
+            isFav: false
         }
         this.notes.unshift(note)
         this.inputTitle = '';
@@ -65,7 +67,27 @@ export const useStoreNotes = defineStore('storeNotes', {
     deleteNote(id) {
       console.log(id)
       this.notes = this.notes.filter(note => note.id !== id)
+      this.favNotes = this.favNotes.filter(favNote => favNote.id !== id)
       this.updateLocalStorage()
+    },
+    addToFav(id) {
+      const note = this.notes.find(note => note.id === id);
+      if (note) {
+        // Check if the note is already in favorites
+        
+        if (!note.isFav) {
+          this.favNotes.push(note); // Add note to favorites
+          note.isFav = true
+          // Optionally, you can remove the note from the regular notes list
+          // this.notes = this.notes.filter(note => note.id !== id);
+        } else {
+          // If already a favorite, you can remove it from favorites
+          this.favNotes = this.favNotes.filter(favNote => favNote.id !== id)
+          note.isFav = false
+        }
+        this.updateLocalStorage(); // Update localStorage
+      }
+      console.log(this.favNotes)
     },
     addNoteModal() {
       this.modalIsVisible = true
@@ -95,13 +117,18 @@ export const useStoreNotes = defineStore('storeNotes', {
     },
     // Function to update local storage
     updateLocalStorage() {
-      localStorage.setItem("notes", JSON.stringify(this.notes));
+      localStorage.setItem("notes", JSON.stringify(this.notes))
+      localStorage.setItem("favNotes", JSON.stringify(this.favNotes))
     },
     // Function to load notes from local storage
     loadFromLocalStorage() {
-      const storeNotes = localStorage.getItem("notes");
+      const storeNotes = localStorage.getItem("notes")
+      const favNotes = localStorage.getItem("favNotes");
       if (storeNotes) {
         this.notes = JSON.parse(storeNotes);
+      }
+      if (favNotes) {
+        this.favNotes = JSON.parse(favNotes)
       }
     },
   }

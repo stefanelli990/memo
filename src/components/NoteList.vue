@@ -13,6 +13,7 @@
       :color="note.color"
       :date="note.date"
       :id="note.id"
+      :favorite="note.isFav"
     />
   </ul>
 </template>
