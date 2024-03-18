@@ -12,30 +12,41 @@
         <div class="pl-4 hidden items-center space-x-4 font-semibold md:flex ">
           <nav class="space-x-4">
             <RouterLink to="/" active-class="active-link">Add Notes</RouterLink>
-            <RouterLink to="/favorite-notes" active-class="active-link">Favorite Notes</RouterLink>
+            <RouterLink to="/favorite-notes" active-class="active-link">Favorite Notes({{ storeNotes.favNotes.length }})</RouterLink>
           </nav>
           <div class="flex space-x-2">
             <button @click="toggleDark()" class="btn-circle">
-              <Icon v-if="!isDark" icon="f7:moon-stars-fill" width="24" height="24"/>
-              <Icon v-else icon="fluent:weather-sunny-28-filled" width="24" height="24"/>
+              <Icon v-if="!isDark" icon="f7:moon-stars-fill" width="20" height="20"/>
+              <Icon v-else icon="fluent:weather-sunny-28-filled" width="20" height="20"/>
             </button>
             <a href="https://github.com/stefanelli990/memo-vue" target="_blank" class="btn-circle">
-              <Icon icon="mdi:github" width="24" height="24" />
+              <Icon icon="mdi:github" width="20" height="20" />
             </a>
           </div>
         </div>
       </div>
     </header>
+    <RouterView />
 </template>
 
 <script setup>
+import { RouterView, useRouter } from 'vue-router'
 import { RouterLink } from 'vue-router'
-import SearchNotes from "../components/SearchNotes.vue"
 import { Icon } from '@iconify/vue'
 import { useDark, useToggle } from '@vueuse/core'
+import { useStoreNotes } from "../stores/storeNotes"
+import SearchNotes from "../components/SearchNotes.vue"
+
+const storeNotes = useStoreNotes()
+const router = useRouter()
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
+
+router.beforeEach(() => {
+  storeNotes.searchTerm = ''
+})
+
 
 </script>
 

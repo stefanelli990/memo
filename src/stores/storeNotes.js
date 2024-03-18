@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { v4 as uuidv4 } from "uuid"
+
 export const useStoreNotes = defineStore('storeNotes', {
   state: () => {
     return { 
@@ -18,14 +19,23 @@ export const useStoreNotes = defineStore('storeNotes', {
   },
   getters: {
     filterNotes: (state) => {
-      const search = state.searchTerm.toLowerCase().trim();
+      const search = state.searchTerm.toLowerCase().trim()
   
       if(search === '') {
         return state.notes
       } else {
         return state.notes.filter(note => note.title.toLowerCase().includes(search))
       }
-     }
+     },
+     filterFavNotes: (state) => {
+      const search = state.searchTerm.toLowerCase().trim()
+
+      if (search === '') {
+        return state.favNotes
+      } else {
+        return state.favNotes.filter(note => note.title.toLowerCase().includes(search))
+      }
+    }
   },
   actions: {
     addNote() {
@@ -71,21 +81,18 @@ export const useStoreNotes = defineStore('storeNotes', {
       this.updateLocalStorage()
     },
     addToFav(id) {
-      const note = this.notes.find(note => note.id === id);
+      const note = this.notes.find(note => note.id === id)
       if (note) {
         // Check if the note is already in favorites
         
         if (!note.isFav) {
-          this.favNotes.push(note); // Add note to favorites
+          this.favNotes.push(note)
           note.isFav = true
-          // Optionally, you can remove the note from the regular notes list
-          // this.notes = this.notes.filter(note => note.id !== id);
         } else {
-          // If already a favorite, you can remove it from favorites
           this.favNotes = this.favNotes.filter(favNote => favNote.id !== id)
           note.isFav = false
         }
-        this.updateLocalStorage(); // Update localStorage
+        this.updateLocalStorage()
       }
       console.log(this.favNotes)
     },
@@ -105,6 +112,7 @@ export const useStoreNotes = defineStore('storeNotes', {
       this.inputTitle = this.notes[index].title
       this.inputDescription = this.notes[index].description
       this.pickedColor = this.notes[index].color
+      this.updateLocalStorage(); // Update localStorage
     },
     closeModal() {
       this.modalIsVisible = false

@@ -1,7 +1,6 @@
 <template>
   <AppHeader/>
   <main>
-    
     <AppModal>
       <div class="flex justify-between items-center mb-8">
         <h2 class="text-xl font-semibold">{{ !storeNotes.isEditing ? 'Add New Note' : 'Edit Note'}}</h2>
@@ -64,7 +63,6 @@
       </form>
     </AppModal>
   </main>
-  <RouterView />
 </template>
 
 <script setup>
@@ -72,9 +70,8 @@
 import AppHeader from './components/AppHeader.vue'
 import AppModal from "./components/AppModal.vue"
 import AppBtn from './components/AppBtn.vue'
-import { Icon } from '@iconify/vue'
 import ErrorMsg from './components/ErrorMsg.vue'
-
+import { Icon } from '@iconify/vue'
 import { useStoreNotes } from "./stores/storeNotes"
 
 const storeNotes = useStoreNotes()
