@@ -1,5 +1,8 @@
 <template>
   <AppHeader/>
+  <Transition name="slide">
+    <MobileSearch/>
+  </Transition>
   <main>
     <AppModal>
       <div class="flex justify-between items-center mb-8">
@@ -23,7 +26,7 @@
             type="text"
             class="bg-gray-100 p-4 w-full rounded-2xl focus:ring-2 focus:ring-primaryColor border-none dark:bg-slate-800"
           />
-          <ErrorMsg v-show="storeNotes.errorTitle" message="Please enter a title."/>
+          <ErrorMsg v-show="storeNotes.errorTitle" message="Please, enter a title."/>
         </div>
         <div class="flex flex-col mb-4">
           <label for="description" class="mb-1 text-sm">Description</label>
@@ -73,7 +76,27 @@ import AppBtn from './components/AppBtn.vue'
 import ErrorMsg from './components/ErrorMsg.vue'
 import { Icon } from '@iconify/vue'
 import { useStoreNotes } from "./stores/storeNotes"
+import MobileSearch from './components/MobileSearch.vue'
 
 const storeNotes = useStoreNotes()
 
 </script>
+
+<style>
+.slide-enter-from {
+  translate: 0 -74px;
+}
+.slide-enter-to {
+  translate: 0 0;
+}
+.slide-leave-from {
+  translate: 0 0;
+}
+.slide-leave-to {
+  translate: 0 -74px;
+}
+.slide-enter-active,
+.slide-leave-active {
+  transition: .3s;
+}
+</style>

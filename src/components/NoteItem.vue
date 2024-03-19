@@ -2,7 +2,7 @@
   <li class="w-full rounded-2xl h-60 p-4 flex flex-col relative text-darkColor" :class="color">
     <div class="flex-1">
       <div class="flex justify-between items-start">
-        <h2 class="text-2xl font-semibold mb-4">{{ title }}</h2>
+        <h2 class="text-2xl font-semibold mb-4 truncate">{{ title }}</h2>
         <button @click="toggleDropdown" ref="toggle">
           <Icon icon="tabler:dots" width="24" height="24"/>
         </button>

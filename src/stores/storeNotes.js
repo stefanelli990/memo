@@ -14,7 +14,8 @@ export const useStoreNotes = defineStore('storeNotes', {
       searchTerm: '',
       currentId: null,
       errorTitle: false,
-      errorDesc: false
+      errorDesc: false,
+      mobileSearchIsVisible: false
     }
   },
   getters: {
@@ -122,6 +123,12 @@ export const useStoreNotes = defineStore('storeNotes', {
       this.pickedColor = 'bg-lightYellow'
       this.errorTitle = false
       this.errorDesc = false
+    },
+    openMobileSearch() {
+      this.mobileSearchIsVisible = true
+    },
+    closeMobileSearch() {
+      this.mobileSearchIsVisible = false
     },
     // Function to update local storage
     updateLocalStorage() {
