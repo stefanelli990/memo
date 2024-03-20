@@ -7,7 +7,9 @@
           <Icon icon="tabler:dots" width="24" height="24"/>
         </button>
       </div>
-      <p>{{ description }}</p>
+      <div class="inline-grid">
+        <p class="truncate whitespace-break-spaces line-clamp-5">{{ description }}</p>
+      </div>
     </div>
     <div class="border-t border-t-darkColor/10 pt-2 text-sm">
       {{ date }}
@@ -15,7 +17,11 @@
       <div class="absolute right-4 top-10 bg-white border border-gray-300 rounded-md overflow-hidden" v-show="dropdownIsVisible" ref="dropdown"> 
         <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" ref="editButton" @click="storeNotes.editModal(id)"><Icon icon="tabler:edit" width="20"/><span>Edit</span></button>
         <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" @click="storeNotes.deleteNote(id)"><Icon icon="ph:trash-bold" width="20"/><span>Delete</span></button>
-        <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" @click="storeNotes.addToFav(id)"><Icon icon="ph:star-bold" width="20" height="20"/><span>{{ favorite ? 'Remove from' : 'Add to' }} favorite</span></button>
+        <button class="flex items-center space-x-2 font-semibold p-2 w-full text-sm hover:bg-gray-100" @click="storeNotes.addToFav(id)">
+          <Icon v-if="favorite" icon="uim:favorite" width="20" height="20"/>
+          <Icon v-else icon="ph:star-bold" width="20" height="20"/>
+          <span>{{ favorite ? 'Unfavorite' : 'Favorite' }}</span>
+        </button>
       </div>
   </li>
 </template>
