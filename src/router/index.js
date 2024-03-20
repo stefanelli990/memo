@@ -5,7 +5,7 @@ import AddNotesView from '../views/AddNotesView.vue'
 import FavoriteNotesView from '../views/FavoriteNotesView.vue'
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
