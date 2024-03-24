@@ -29,7 +29,7 @@
     </header>
 
     <!-- side menu -->
-    <div class="bg-white fixed top-0 left-0 h-full flex flex-col w-9/12 duration-300 p-4 z-10 md:hidden dark:bg-slate-800" :class="sideMenuIsVisible ? 'translate-x-0' : '-translate-x-full'">
+    <div class="bg-white fixed top-0 left-0 h-full flex flex-col w-9/12 duration-300 p-4 z-20 md:hidden dark:bg-slate-800" :class="sideMenuIsVisible ? 'translate-x-0' : '-translate-x-full'">
       <button @click="closeMenu">
         <Icon icon="iconamoon:close" width="32" height="32" />
       </button>
@@ -44,7 +44,7 @@
         </a>
       </div>
     </div>
-    <div @click="closeMenu" class="bg-black/25 fixed top-0 right-0 h-full w-full duration-300 md:hidden" :class="sideMenuIsVisible ? 'visible opacity-100' : 'invisible opacity-0'"></div>
+    <div @click="closeMenu" class="bg-black/25 fixed top-0 right-0 h-full w-full duration-300 z-10 md:hidden" :class="sideMenuIsVisible ? 'visible opacity-100' : 'invisible opacity-0'"></div>
     <RouterView />
 </template>
 

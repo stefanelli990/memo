@@ -2,7 +2,7 @@
     <main>
         <p v-if="storeNotes.favNotes.length === 0 && !storeNotes.searchTerm" class="text-lg max-w-md mx-auto text-center font-semibold">Favorite notes will appear here</p>
         <NoNotes v-if="!storeNotes.filterFavNotes.length && storeNotes.searchTerm" note-type="favorite notes"/>
-        <ul v-else class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul v-else class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <NoteItem v-for="favNote in storeNotes.filterFavNotes" 
             :key="favNote.id"
             :title="favNote.title"

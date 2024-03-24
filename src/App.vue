@@ -29,11 +29,15 @@
           <ErrorMsg v-show="storeNotes.errorTitle" message="Please, enter a title."/>
         </div>
         <div class="flex flex-col mb-4">
-          <label for="description" class="mb-1 text-sm">Description</label>
+          <div class="flex justify-between mb-1">
+            <label for="description" class="text-sm">Description</label>
+            <span class="text-xs">{{ storeNotes.inputDescription.length }} / 100</span>
+          </div>
           <textarea
             v-model="storeNotes.inputDescription"
             name="description"
             id="description"
+            maxlength="100"
             rows="4"
             class="bg-gray-100 p-4 w-full resize-none rounded-2xl focus:ring-2 focus:ring-primaryColor border-none dark:bg-slate-800"
           ></textarea>
@@ -43,19 +47,19 @@
           <label class="mb-1 text-sm">Color</label>
           <div class="flex gap-4 mt-2 flex-wrap">
             <label>
-              <input v-model="storeNotes.pickedColor" value="bg-lightYellow" type="radio" class="h-12 w-12 cursor-pointer checked:bg-lightYellow text-lightYellow bg-lightYellow border border-gray-100 checked:ring-2 checked:ring-offset-2  checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio"/>
+              <input v-model="storeNotes.pickedColor" value="bg-lightYellow" type="radio" class="h-10 w-10 sm:h-12 sm:w-12 cursor-pointer checked:bg-lightYellow text-lightYellow bg-lightYellow border border-gray-100 checked:ring-2 checked:ring-offset-2  checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio"/>
             </label>
             <label>
-              <input v-model="storeNotes.pickedColor" value="bg-lightBlue" type="radio" class="h-12 w-12 cursor-pointer  checked:bg-lightBlue   text-lightBlue bg-lightBlue border border-gray-100 checked:ring-2 checked:ring-offset-2 checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio"/>
+              <input v-model="storeNotes.pickedColor" value="bg-lightBlue" type="radio" class="h-10 w-10 sm:h-12 sm:w-12 cursor-pointer  checked:bg-lightBlue   text-lightBlue bg-lightBlue border border-gray-100 checked:ring-2 checked:ring-offset-2 checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio"/>
             </label>
             <label>
-              <input v-model="storeNotes.pickedColor" value="bg-lightPink" type="radio" class="h-12 w-12 cursor-pointer checked:bg-lightPink text-lightPink bg-lightPink border border-gray-100 checked:ring-2 checked:ring-offset-2 checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio">
+              <input v-model="storeNotes.pickedColor" value="bg-lightPink" type="radio" class="h-10 w-10 sm:h-12 sm:w-12 cursor-pointer checked:bg-lightPink text-lightPink bg-lightPink border border-gray-100 checked:ring-2 checked:ring-offset-2 checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio">
             </label>
             <label>
-              <input v-model="storeNotes.pickedColor" value="bg-lightGreen" type="radio" class="h-12 w-12 cursor-pointer checked:bg-lightGreen text-lightGreen bg-lightGreen border border-gray-100 checked:ring-2 checked:ring-offset-2 checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio">
+              <input v-model="storeNotes.pickedColor" value="bg-lightGreen" type="radio" class="h-10 w-10 sm:h-12 sm:w-12 cursor-pointer checked:bg-lightGreen text-lightGreen bg-lightGreen border border-gray-100 checked:ring-2 checked:ring-offset-2 checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio">
             </label>
             <label>
-              <input v-model="storeNotes.pickedColor" value="bg-lightLavander" type="radio" class="h-12 w-12 cursor-pointer checked:bg-lightLavander text-lightLavander bg-lightLavander border border-gray-100 checked:ring-2 checked:ring-offset-2 checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio">
+              <input v-model="storeNotes.pickedColor" value="bg-lightLavander" type="radio" class="h-10 w-10 sm:h-12 sm:w-12 cursor-pointer checked:bg-lightLavander text-lightLavander bg-lightLavander border border-gray-100 checked:ring-2 checked:ring-offset-2 checked:ring-primaryColor active:ring-transparent checked:active:ring-primaryColor focus:ring-transparent checked:focus:ring-primaryColor dark:checked:ring-offset-slate-900 dark:active:ring-offset-slate-900" name="radio">
             </label>
           </div>
         </div>

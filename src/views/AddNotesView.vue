@@ -1,7 +1,7 @@
 <template>
     <main>
         <NoNotes v-if="!storeNotes.filterNotes.length && storeNotes.searchTerm" note-type="notes"/>
-        <ul v-else class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul v-else class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div v-if="!storeNotes.filterNotes.length" class="col-span-3">
             <AddNote/>
             <h3 class="mt-8 text-lg max-w-md mx-auto text-center font-semibold">Ready to capture your ideas? Create your note and begin your note-taking journey!</h3>

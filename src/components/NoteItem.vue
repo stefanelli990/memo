@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="inline-grid">
-        <p class="truncate whitespace-break-spaces line-clamp-5">{{ description }}</p>
+        <p class="truncate whitespace-break-spaces">{{ description }}</p>
       </div>
     </div>
     <div class="border-t border-t-darkColor/10 pt-2 text-sm">
