@@ -1,10 +1,10 @@
-# Memo Vue
+# Memo
 
 ## Description
 
-Memo Vue is a sleek and intuitive notes app, designed to streamline your note-taking experience.
+Memo is a sleek and intuitive notes app, designed to streamline your note-taking experience.
 
-**[Live Preview](https://precious-kelpie-280460.netlify.app/):** Try the Memo Vue live.
+**[Live Preview](https://adorable-daifuku-18792a.netlify.app/):** Try the Memo Vue live.
 
 ## Features:
 
