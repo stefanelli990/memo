@@ -9,7 +9,7 @@
         @apply font-family;
       }
     body {
-        @apply bg-slate-50 text-darkColor font-medium dark:bg-slate-900 dark:text-white;
+        @apply bg-slate-50 text-darkColor font-medium overflow-x-hidden dark:bg-slate-900 dark:text-white;
     }
     [type='radio']:checked {
         background-image: none;

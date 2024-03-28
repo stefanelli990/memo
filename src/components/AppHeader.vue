@@ -6,24 +6,22 @@
             <Icon icon="solar:hamburger-menu-linear" width="32px" height="32px" />
           </button>
           <RouterLink to="/" class="flex items-center whitespace-nowrap space-x-1 md:mr-4">
-            <Icon class="text-primaryColor" icon="solar:notes-bold" width="32" height="32" />
-            <h1 class="text-2xl font-extrabold "><span class="text-primaryColor">Memo</span>Vue</h1></RouterLink>
+            <Icon class="text-primaryColor" icon="solar:notes-bold" width="36" height="36" />
+            <h1 class="text-2xl font-extrabold text-primaryColor">Memo</h1></RouterLink>
           <SearchNotes class="hidden md:block"/>
         </div>
-        <button @click="storeNotes.openMobileSearch" class="btn-circle md:hidden">
-          <Icon icon="streamline:magnifying-glass-solid" width="16" height="16" />
-        </button>
-        <div class="pl-4 hidden items-center space-x-4 font-semibold md:flex ">
+        
+        <div class="ml-4 mr-2 hidden items-center space-x-4 font-semibold md:flex ">
           <nav class="space-x-4">
             <RouterLink to="/" active-class="active-link">Add Notes</RouterLink>
             <RouterLink to="/favorite-notes" active-class="active-link">Favorite Notes({{ storeNotes.favNotes.length }})</RouterLink>
           </nav>
-          <div class="flex space-x-2">
-            <ToggleDark/>
-            <a href="https://github.com/stefanelli990/memo-vue" target="_blank" class="btn-circle">
-              <Icon icon="mdi:github" width="20" height="20" />
-            </a>
-          </div>
+        </div>
+        <div class="flex space-x-2">
+          <button @click="storeNotes.openMobileSearch" class="btn-circle md:hidden">
+            <Icon icon="streamline:magnifying-glass-solid" width="16" height="16" />
+          </button>
+          <ToggleDark/>
         </div>
       </div>
     </header>
@@ -37,15 +35,13 @@
         <RouterLink @click="closeMenu" to="/" active-class="active-link">Add Notes</RouterLink>
         <RouterLink @click="closeMenu" to="/favorite-notes" active-class="active-link">Favorite Notes({{ storeNotes.favNotes.length }})</RouterLink>
       </nav>
-      <div class="flex space-x-3">
-        <ToggleDark/>
-        <a href="https://github.com/stefanelli990/memo-vue" target="_blank" class="btn-circle">
-          <Icon icon="mdi:github" width="20" height="20" />
-        </a>
-      </div>
     </div>
     <div @click="closeMenu" class="bg-black/25 fixed top-0 right-0 h-full w-full duration-300 z-10 md:hidden" :class="sideMenuIsVisible ? 'visible opacity-100' : 'invisible opacity-0'"></div>
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <Transition name="page-transition" mode="out-in">
+        <component :is="Component"/>
+      </Transition>
+    </RouterView>
 </template>
 
 <script setup>
@@ -76,4 +72,19 @@ router.beforeEach(() => {
 
 
 </script>
+
+<style>
+
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: 400ms ease all
+}
+
+.page-transition-enter-from,
+.page-transition-leave-to {
+  opacity: 0;
+  transform: translateX(-75px);
+}
+
+</style>
 
