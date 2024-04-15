@@ -77,13 +77,13 @@ router.beforeEach(() => {
 
 .page-transition-enter-active,
 .page-transition-leave-active {
-  transition: 400ms ease all
+  transition: 200ms ease all;
 }
 
 .page-transition-enter-from,
 .page-transition-leave-to {
   opacity: 0;
-  transform: translateX(-75px);
+  transform: scale(0.9);
 }
 
 </style>

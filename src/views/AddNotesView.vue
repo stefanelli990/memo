@@ -31,3 +31,20 @@ import { useStoreNotes } from "../stores/storeNotes"
 const storeNotes = useStoreNotes()
 
 </script>
+
+<style scoped>
+
+.v-enter-from,
+.v-leave-to {
+    transform: scale(0.9);
+}
+.v-enter-to,
+.v-leave-from {
+    transform: scale(1);
+}
+.v-enter-active,
+.v-leave-active {
+  transition: .3s;
+}
+
+</style>
