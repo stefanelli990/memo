@@ -4,7 +4,7 @@
 
 Memo is a sleek and intuitive notes app, designed to streamline your note-taking experience.
 
-**[Live Preview](https://adorable-daifuku-18792a.netlify.app/):** Try the Memo Vue live.
+**[Live Preview](https://adorable-daifuku-18792a.netlify.app/):** Try the Memo live.
 
 ## Features:
 
